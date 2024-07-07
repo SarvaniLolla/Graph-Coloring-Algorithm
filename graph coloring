@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int V; // Number of vertices
+vector<vector<int>> adj; // Adjacency list to represent the graph
+vector<int> colors; // To store colors assigned to vertices
+
+bool isSafe(int v, int c) {
+    for (int u : adj[v]) {
+        if (colors[u] == c)
+            return false;
+    }
+    return true;
+}
+
+bool graphColoringUtil(int v) {
+    if (v == V)
+        return true;
+
+    for (int c = 0; c < V; c++) {
+        if (isSafe(v, c)) {
+            colors[v] = c;
+            if (graphColoringUtil(v + 1))
+                return true;
+            colors[v] = -1; // Backtrack
+        }
+    }
+
+    return false;
+}
+
+bool graphColoring() {
+    colors.assign(V, -1);
+    return graphColoringUtil(0);
+}
+
+int main() {
+    int E; // Number of edges
+    cout << "Enter number of vertices and edges: ";
+    cin >> V >> E;
+
+    adj.resize(V);
+    colors.resize(V);
+
+    int u, v;
+    cout << "Enter edges (u v): ";
+    for (int i = 0; i < E; i++) {
+        cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+
+    if (graphColoring()) {
+        cout << "Vertex colors:\n";
+        for (int i = 0; i < V; i++) {
+            cout << "Vertex " << i << ": Color " << colors[i] << "\n";
+        }
+    } else {
+        cout << "No feasible coloring exists\n";
+    }
+
+    return 0;
+}
