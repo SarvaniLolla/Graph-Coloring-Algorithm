@@ -12,8 +12,17 @@ Utilizing supervised learning approaches like "Linear Regression" and "Decision 
 
 ## Code Usage
 
-In this project, we have used the Dev C++ application to run the code.
+After running the code in Dev c++ application, we need to enter the inputs. For instance, we have 
+taken the inputs as follows: 
+Total number of edges and vertices: 4 5
+enter edge vertices of edge 1: 1 2
+enter edge vertices of edge 2: 2 3
+enter edge vertices of edge 3: 3 4
+enter edge vertices of edge 4: 4 1
+enter edge vertices of edge 5: 2 4
 
-### Example Inputs:
-- Total number of vertices and edges: `4 5`
-- Edge vertices:
+The results obtained is:
+Vertex 1 is coloured with 1st color.
+Vertex 2 is coloured with 2nd color.
+Vertex 3 is coloured with 1st color.
+Vertex 4 is coloured with 3rd color.
